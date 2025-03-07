@@ -1,0 +1,71 @@
+2025-03-07 19:43:28.505108: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1741376608.526594    3552 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1741376608.534467    3552 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+Global seed set to 1501
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Missing logger folder: /content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/usr/local/lib/python3.11/dist-packages/pl_bolts/__init__.py:11: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  if not hasattr(numpy, tp_name):
+/usr/local/lib/python3.11/dist-packages/pl_bolts/__init__.py:11: FutureWarning: In the future `np.bool` will be defined as the corresponding NumPy scalar.
+  if not hasattr(numpy, tp_name):
+/usr/local/lib/python3.11/dist-packages/pl_bolts/models/self_supervised/amdim/amdim_module.py:34: UnderReviewWarning: The feature generate_power_seq is currently marked under review. The compatibility with other Lightning projects is not guaranteed and API may change at any time. The API and functionality may change without warning in future releases. More details: https://lightning-bolts.readthedocs.io/en/latest/stability.html
+  "lr_options": generate_power_seq(LEARNING_RATE_CIFAR, 11),
+/usr/local/lib/python3.11/dist-packages/pl_bolts/models/self_supervised/amdim/amdim_module.py:92: UnderReviewWarning: The feature FeatureMapContrastiveTask is currently marked under review. The compatibility with other Lightning projects is not guaranteed and API may change at any time. The API and functionality may change without warning in future releases. More details: https://lightning-bolts.readthedocs.io/en/latest/stability.html
+  contrastive_task: Union[FeatureMapContrastiveTask] = FeatureMapContrastiveTask("01, 02, 11"),
+/usr/local/lib/python3.11/dist-packages/pl_bolts/losses/self_supervised_learning.py:228: UnderReviewWarning: The feature AmdimNCELoss is currently marked under review. The compatibility with other Lightning projects is not guaranteed and API may change at any time. The API and functionality may change without warning in future releases. More details: https://lightning-bolts.readthedocs.io/en/latest/stability.html
+  self.nce_loss = AmdimNCELoss(tclip)
+/usr/local/lib/python3.11/dist-packages/hydra/_internal/instantiate/_instantiate2.py:92: UnderReviewWarning: The feature LinearWarmupCosineAnnealingLR is currently marked under review. The compatibility with other Lightning projects is not guaranteed and API may change at any time. The API and functionality may change without warning in future releases. More details: https://lightning-bolts.readthedocs.io/en/latest/stability.html
+  return _target_(*args, **kwargs)
+
+  | Name     | Type       | Params
+----------------------------------------
+0 | model    | Sequential | 5.3 M 
+1 | ctc_loss | CTCLoss    | 0     
+2 | metrics  | ModuleDict | 0     
+----------------------------------------
+5.3 M     Trainable params
+0         Non-trainable params
+5.3 M     Total params
+21.173    Total estimated model params size (MB)
+/usr/local/lib/python3.11/dist-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/usr/local/lib/python3.11/dist-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+Epoch 0, global step 91: 'val/CER' reached 1339.63220 (best 1339.63220), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=0-step=91.ckpt' as top 1
+Epoch 1, global step 182: 'val/CER' reached 100.00000 (best 100.00000), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=1-step=182.ckpt' as top 1
+Epoch 2, global step 273: 'val/CER' was not in top 1
+Epoch 3, global step 364: 'val/CER' was not in top 1
+Epoch 4, global step 455: 'val/CER' was not in top 1
+Epoch 5, global step 546: 'val/CER' was not in top 1
+Epoch 6, global step 637: 'val/CER' was not in top 1
+Epoch 7, global step 728: 'val/CER' was not in top 1
+Epoch 8, global step 819: 'val/CER' was not in top 1
+Epoch 9, global step 910: 'val/CER' was not in top 1
+Epoch 10, global step 1001: 'val/CER' was not in top 1
+Epoch 11, global step 1092: 'val/CER' reached 99.51263 (best 99.51263), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=11-step=1092.ckpt' as top 1
+Epoch 12, global step 1183: 'val/CER' reached 98.05051 (best 98.05051), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=12-step=1183.ckpt' as top 1
+Epoch 13, global step 1274: 'val/CER' reached 89.63226 (best 89.63226), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=13-step=1274.ckpt' as top 1
+Epoch 14, global step 1365: 'val/CER' was not in top 1
+Epoch 15, global step 1456: 'val/CER' reached 83.40718 (best 83.40718), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=15-step=1456.ckpt' as top 1
+Epoch 16, global step 1547: 'val/CER' reached 82.72043 (best 82.72043), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=16-step=1547.ckpt' as top 1
+Epoch 17, global step 1638: 'val/CER' reached 79.57465 (best 79.57465), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=17-step=1638.ckpt' as top 1
+Epoch 18, global step 1729: 'val/CER' reached 75.45414 (best 75.45414), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=18-step=1729.ckpt' as top 1
+Epoch 19, global step 1820: 'val/CER' reached 70.97918 (best 70.97918), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=19-step=1820.ckpt' as top 1
+Epoch 20, global step 1911: 'val/CER' reached 68.83031 (best 68.83031), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=20-step=1911.ckpt' as top 1
+Epoch 21, global step 2002: 'val/CER' reached 65.77315 (best 65.77315), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=21-step=2002.ckpt' as top 1
+Epoch 22, global step 2093: 'val/CER' was not in top 1
+Epoch 23, global step 2184: 'val/CER' reached 61.65264 (best 61.65264), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=23-step=2184.ckpt' as top 1
+Epoch 24, global step 2275: 'val/CER' reached 58.19672 (best 58.19672), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=24-step=2275.ckpt' as top 1
+Epoch 25, global step 2366: 'val/CER' reached 55.29464 (best 55.29464), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=25-step=2366.ckpt' as top 1
+Epoch 26, global step 2457: 'val/CER' reached 53.52237 (best 53.52237), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=26-step=2457.ckpt' as top 1
+Epoch 27, global step 2548: 'val/CER' reached 52.79132 (best 52.79132), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=27-step=2548.ckpt' as top 1
+Epoch 28, global step 2639: 'val/CER' reached 52.43686 (best 52.43686), saving model to '/content/drive/MyDrive/emg2qwerty-main/logs/2025-03-07/19-43-23/job0_trainer.devices=1,user=single_user/checkpoints/epoch=28-step=2639.ckpt' as top 1
+Epoch 29, global step 2730: 'val/CER' was not in top 1
+`Trainer.fit` stopped: `max_epochs=30` reached.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
