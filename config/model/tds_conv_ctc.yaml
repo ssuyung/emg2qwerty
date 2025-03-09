@@ -8,5 +8,6 @@ module:
 
 datamodule:
   _target_: emg2qwerty.lightning.WindowedEMGDataModule
-  window_length: 8000  # 4 sec windows for 2kHz EMG
+  window_length: 8000  # 4 sec windows for 2kHz EMG # change this for sampling exp
   padding: [1800, 200]  # 900ms past context, 100ms future context
+  stride: 8000 # change this for sampling exp, if lower than `window_length` might lead to overlap
