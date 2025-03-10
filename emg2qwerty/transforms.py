@@ -35,12 +35,12 @@ class ToTensor:
 
     fields: Sequence[str] = ("emg_left", "emg_right")
     stack_dim: int = 1
+    skip_dim: int = 1
 
     def __call__(self, data: np.ndarray) -> torch.Tensor:
         return torch.stack(
-            [torch.as_tensor(data[f]) for f in self.fields], dim=self.stack_dim
+            [torch.as_tensor(data[f][:,::self.skip_dim]) for f in self.fields], dim=self.stack_dim
         )
-
 
 @dataclass
 class Lambda:
