@@ -159,7 +159,7 @@ class TDSConvCTCModule(pl.LightningModule):
 
         # Model
         # inputs: (T, N, bands=2, electrode_channels=16, freq)
-        self.model = nn.Sequential(
+        self.model_seq1 = nn.Sequential(
             # (T, N, bands=2, C=16, freq)
             SpectrogramNorm(channels=self.NUM_BANDS * self.ELECTRODE_CHANNELS),
             # (T, N, bands=2, mlp_features[-1])
@@ -170,15 +170,16 @@ class TDSConvCTCModule(pl.LightningModule):
             ),
             # (T, N, num_features)
             nn.Flatten(start_dim=2),
-            # TDSConvEncoder(
-            #     num_features=num_features,
-            #     block_channels=block_channels,
-            #     kernel_width=kernel_width,
-            # ),
-            TDSLSTMEncoder(num_features=num_features,
+        )
+        self.model_conv = TDSConvEncoder(
+            num_features=num_features,
+            block_channels=block_channels,
+            kernel_width=kernel_width,
+        )
+        self.model_lstm = TDSLSTMEncoder(num_features=num_features,
                            lstm_hidden_size=128,
-                           num_lstm_layers=4),
-            # (T, N, num_classes)
+                           num_lstm_layers=4)
+        self.model_seq2 = nn.Sequential(
             nn.Linear(num_features, charset().num_classes),
             nn.LogSoftmax(dim=-1),
         )
@@ -199,7 +200,12 @@ class TDSConvCTCModule(pl.LightningModule):
         )
 
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:
-        return self.model(inputs)
+        # return self.model(inputs)
+        out = self.model_seq1(inputs)
+        out_conv = self.model_conv(out)
+        out_lstm = self.model_lstm(out)
+        out = self.model_seq2(torch.cat((out_conv, out_lstm), dim=0))
+        return out
 
     def _step(
         self, phase: str, batch: dict[str, torch.Tensor], *args, **kwargs
