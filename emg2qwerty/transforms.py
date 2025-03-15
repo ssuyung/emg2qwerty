@@ -19,6 +19,20 @@ Transform = Callable[[TTransformIn], TTransformOut]
 
 
 @dataclass
+class GaussianNoise:
+  
+    mean: float = 0.0
+    std: float = 0.05
+
+    def __init__(self, std: float, mean: float = 0.0):
+        self.mean = mean
+        self.std = std
+
+    def __call__(self, tensor: torch.Tensor) -> torch.Tensor:
+        noise = torch.randn_like(tensor) * self.std + self.mean
+        return tensor + noise
+
+@dataclass
 class ToTensor:
     """Extracts the specified ``fields`` from a numpy structured array
     and stacks them into a ``torch.Tensor``.
